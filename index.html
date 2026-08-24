@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Studio Vedana</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Cinzel:wght@400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c7c6c4",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "surface-variant": "#353535",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-container": "#f6f3f3",
+                        "on-primary-container": "#fff1f0",
+                        "outline-variant": "#5c3f3f",
+                        "surface-container": "#1f1f1f",
+                        "surface-dim": "#131313",
+                        "secondary-fixed": "#e3e2e0",
+                        "inverse-surface": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#464746",
+                        "error-container": "#93000a",
+                        "secondary-container": "#464746",
+                        "secondary": "#c7c6c4",
+                        "on-secondary-fixed": "#1b1c1b",
+                        "on-secondary-container": "#b5b5b3",
+                        "inverse-primary": "#bf0030",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-background": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-tertiary": "#313030",
+                        "on-primary-fixed-variant": "#920022",
+                        "outline": "#ac8888",
+                        "primary": "#ffb3b3",
+                        "surface-container-low": "#1b1b1b",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#40000a",
+                        "surface-tint": "#ffb3b3",
+                        "surface-container-highest": "#353535",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#706f6f",
+                        "on-surface-variant": "#e6bdbc",
+                        "tertiary": "#c8c6c5",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface": "#e2e2e2",
+                        "on-primary": "#680015",
+                        "background": "#000000", /* Overridden to True Black */
+                        "primary-fixed": "#ffdad9",
+                        "primary-fixed-dim": "#ffb3b3",
+                        "surface-bright": "#393939",
+                        "on-error": "#690005",
+                        "inverse-on-surface": "#303030",
+                        "primary-container": "#dc143c",
+                        "on-secondary": "#303130",
+                        "surface": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display-lg": ["Bodoni Moda"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "headline-md": ["Bodoni Moda"],
+                        "penance": ["Cinzel"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    },
+                    "boxShadow": {
+                        'crimson-inner': 'inset 0 0 15px rgba(220, 20, 60, 0.2)',
+                    },
+                    "animation": {
+                        'flicker': 'flicker 1.5s infinite alternate',
+                        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    "keyframes": {
+                        flicker: {
+                            '0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%': { opacity: '0.99', textShadow: '0 0 10px rgba(220,20,60,0.8), 0 0 20px rgba(220,20,60,0.8)' },
+                            '20%, 21.999%, 63%, 63.999%, 65%, 69.999%': { opacity: '0.4', textShadow: 'none' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '1', boxShadow: '0 0 10px rgba(220,20,60,0.5)' },
+                            '50%': { opacity: '.5', boxShadow: '0 0 20px rgba(220,20,60,0.8)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: #e2e2e2;
+            overflow-x: hidden;
+        }
+        
+        .flicker-hover:hover {
+            animation: flicker 0.2s infinite alternate;
+        }
+        
+        .neon-text-glow {
+            color: #dc143c;
+            text-shadow: 0 0 5px rgba(220,20,60,0.8), 0 0 15px rgba(220,20,60,0.8);
+            animation: flicker 2s infinite alternate;
+        }
+
+        .isometric-tilt {
+            transition: transform 0.3s ease;
+        }
+        .isometric-tilt:hover {
+            transform: scale(1.05);
+        }
+
+        .framed-image {
+            border: 1px solid #e2e2e2;
+            box-shadow: inset 0 0 15px rgba(220, 20, 60, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .framed-image::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.05"/></svg>');
+            pointer-events: none;
+        }
+
+        /* Modal Styles */
+        #penance-modal {
+            backdrop-filter: blur(20px);
+        }
+        
+        /* Progress Line */
+        .progress-line {
+            width: 2px;
+            background-color: #dc143c;
+            position: relative;
+        }
+        .progress-node {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #000;
+            border: 2px solid #dc143c;
+            position: absolute;
+            left: -5px;
+        }
+        .progress-node.completed {
+            background-color: #dc143c;
+            box-shadow: 0 0 10px rgba(220, 20, 60, 0.8);
+        }
+
+        @keyframes bloodFlowReveal {
+            0% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); filter: drop-shadow(0 20px 10px rgba(220, 20, 60, 0.8)); background: rgba(220, 20, 60, 0.4); border-radius: 50%; }
+            50% { clip-path: polygon(0 50%, 100% 30%, 100% 100%, 0 100%); filter: drop-shadow(0 10px 20px rgba(220, 20, 60, 0.6)); background: rgba(220, 20, 60, 0.2); border-radius: 20%;}
+            100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); filter: drop-shadow(0 0 0 rgba(220, 20, 60, 0)); background: transparent; border-radius: 0;}
+        }
+        .blood-reveal-anim {
+            animation: bloodFlowReveal 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-surface-variant inset-shadow-crimson">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 mx-auto max-w-container-max">
+<div class="font-headline-md text-headline-md font-bold tracking-tighter neon-text-glow transition-colors duration-300 flex items-center gap-2">
+<img class="h-8 w-8 object-contain" src="assets/LOGO VERSION 3 VEDANA (1).png"/>
+                STUDIO VEDANA
+            </div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex gap-gutter items-center">
+<a class="font-label-sm text-label-sm tracking-widest text-secondary-fixed-dim hover:text-primary transition-colors duration-300 flicker-hover" href="#about">ABOUT</a>
+<a class="font-label-sm text-label-sm tracking-widest text-secondary-fixed-dim hover:text-primary transition-colors duration-300 flicker-hover" href="#projects">PROJECTS</a>
+<a class="font-label-sm text-label-sm tracking-widest text-secondary-fixed-dim hover:text-primary transition-colors duration-300 flicker-hover" href="#team">TEAM</a>
+</div>
+<a href="mailto:Studiovedanaltd@gmail.com" class="hidden md:block font-label-sm text-label-sm tracking-widest bg-primary-container text-on-primary-container px-6 py-2 hover:opacity-80 transition-opacity flicker-hover border border-primary-container hover:border-on-surface neon-text-glow !text-white shadow-[0_0_10px_rgba(220,20,60,0.8)]">
+                CONTACT
+            </a>
+<!-- Mobile Menu Icon (Visual Only) -->
+<div class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[80px]"> <!-- Offset for fixed nav -->
+<!-- 1. Seamless Hero -->
+<section class="relative w-full h-[80vh] flex items-center justify-center bg-black overflow-hidden" id="hero">
+<div class="relative w-[400px] h-[400px] md:w-[600px] md:h-[600px] flex items-center justify-center mix-blend-screen opacity-90">
+<img class="w-full h-full object-contain mix-blend-screen" data-alt="Studio Vedana Splash Logo" src="assets/LOGO VERSION 3 VEDANA (1).png"/>
+</div>
+</section>
+<!-- 2. About Section -->
+<section class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-24 md:py-32" id="about">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+<div class="flex flex-col gap-6 order-2 md:order-1">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-inverse-surface">
+                        What is <span class="neon-text-glow">Studio Vedana?</span>
+</h2>
+<div class="w-12 h-px bg-primary-container shadow-[0_0_10px_rgba(220,20,60,0.8)]"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant/80">
+                        We are an independent game development studio dedicated to pushing the boundaries of interactive storytelling. Rooted in the stark contrasts of modern noir, we craft experiences that linger in the shadows of the human psyche. 
+                    </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant/80">
+                        Our mechanics are surgical. Our narratives, relentless. Welcome to the edit suite of reality.
+                    </p>
+</div>
+<div class="order-1 md:order-2">
+<div class="framed-image w-full aspect-video md:aspect-[4/3] isometric-tilt group cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="About Studio Vedana" src="assets/about.webp"/>
+<div class="absolute inset-0 border border-primary-container/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-[inset_0_0_30px_rgba(220,20,60,0.4)]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Project Teaser -->
+<section class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-24 md:py-32 relative" id="projects">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md text-inverse-surface uppercase tracking-widest">
+                    Current Project: <span class="text-primary-container flicker-hover inline-block font-penance text-[64px] drop-shadow-[0_0_10px_rgba(220,20,60,0.8)]">PENANCE</span> - Demo
+</h2>
+</div>
+<div class="relative max-w-5xl mx-auto group cursor-pointer" onclick="document.getElementById('penance-modal').classList.remove('hidden')">
+<div class="framed-image w-full aspect-[21/9] overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-opacity duration-500" data-alt="Studio Vedana Work Showcase" src="assets/work.webp"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+<span class="font-display-lg text-display-lg text-primary-container drop-shadow-[0_0_15px_rgba(220,20,60,1)] tracking-widest mb-8">COMING SOON</span>
+<button class="border border-primary-container text-primary-container px-8 py-3 font-label-sm text-label-sm tracking-widest hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 flicker-hover uppercase">
+                            Learn More
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Interactive Team Section -->
+<section class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-32 flex flex-col items-center justify-center min-h-[60vh] relative" id="team">
+<button class="w-32 h-32 rounded-full border-2 border-primary-container flex items-center justify-center group hover:bg-primary-container/10 transition-colors duration-500 z-20 relative shadow-[0_0_20px_rgba(220,20,60,0.3)]" id="team-reveal-btn">
+<span class="font-label-sm text-label-sm tracking-widest text-primary-container group-hover:text-primary transition-colors">TEAM</span>
+<div class="absolute inset-0 rounded-full border border-primary-container animate-ping opacity-20"></div>
+</button>
+<!-- Hidden Team Nodes -->
+<div class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 z-10 pt-48 md:pt-0" id="team-nodes">
+<!-- Node 1 -->
+<div class="flex flex-col items-center gap-4 group isometric-tilt">
+<div class="w-4 h-4 rounded-full bg-primary-container animate-pulse-glow shadow-[0_0_15px_rgba(220,20,60,0.8)]"></div>
+<div class="text-center border border-surface-variant p-6 bg-surface-container-lowest/80 backdrop-blur-md">
+<h4 class="font-label-sm text-label-sm text-primary mb-2">TECH LEAD</h4>
+<p class="font-headline-md text-headline-md text-on-surface mb-1">Subhangan Dutta</p>
+<p class="font-body-md text-body-md text-on-surface-variant/60 text-sm">Unreal Engine Specialist</p>
+</div>
+</div>
+<!-- Node 2 -->
+<div class="flex flex-col items-center gap-4 group isometric-tilt md:-translate-y-16">
+<div class="w-4 h-4 rounded-full bg-primary-container animate-pulse-glow shadow-[0_0_15px_rgba(220,20,60,0.8)]" style="animation-delay: 0.2s;"></div>
+<div class="text-center border border-surface-variant p-6 bg-surface-container-lowest/80 backdrop-blur-md">
+<h4 class="font-label-sm text-label-sm text-primary mb-2">GAME DESIGNER / CREATIVE LEAD</h4>
+<p class="font-headline-md text-headline-md text-on-surface mb-1">Hardik Pandey</p>
+<p class="font-body-md text-body-md text-on-surface-variant/60 text-sm italic">"I write experiences"</p>
+</div>
+</div>
+<!-- Node 3 -->
+<div class="flex flex-col items-center gap-4 group isometric-tilt">
+<div class="w-4 h-4 rounded-full bg-primary-container animate-pulse-glow shadow-[0_0_15px_rgba(220,20,60,0.8)]" style="animation-delay: 0.4s;"></div>
+<div class="text-center border border-surface-variant p-6 bg-surface-container-lowest/80 backdrop-blur-md">
+<h4 class="font-label-sm text-label-sm text-primary mb-2">ART DIRECTOR</h4>
+<p class="font-headline-md text-headline-md text-on-surface mb-1">Sajid Perwez</p>
+<p class="font-body-md text-body-md text-on-surface-variant/60 text-sm">Illustrator / Digital Artist</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full py-16 px-margin-mobile md:px-margin-desktop mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center gap-gutter max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md neon-text-glow flex items-center gap-2">
+                STUDIO VEDANA
+            </div>
+<div class="flex flex-col items-center justify-center my-8 md:my-0 text-center w-full md:w-auto">
+<p class="font-body-lg text-body-lg text-inverse-surface mb-6 w-full text-center">Interested in learning more?</p>
+<a class="inline-block font-label-sm text-label-sm tracking-widest text-primary-container border border-primary-container px-6 py-2 hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 uppercase shadow-[0_0_10px_rgba(220,20,60,0.5)] hover:shadow-[0_0_20px_rgba(220,20,60,0.8)] neon-text-glow !text-white" href="mailto:Studiovedanaltd@gmail.com">Contact Us</a>
+</div>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-tertiary-fixed-variant hover:text-primary transition-all duration-500 hover:translate-x-1" href="#">INSTAGRAM</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-tertiary-fixed-variant hover:text-primary transition-all duration-500 hover:translate-x-1" href="#">TWITTER</a>
+</div>
+</div>
+<div class="text-center mt-12 font-label-sm text-label-sm tracking-widest text-surface-variant">
+            © 2024 STUDIO VEDANA. ALL RIGHTS RESERVED.
+        </div>
+</footer>
+<!-- 4. Penance Modal -->
+<div class="hidden fixed inset-0 z-[100] bg-black/90 overflow-y-auto w-full h-full" id="penance-modal">
+<!-- Background Texture -->
+<div class="fixed inset-0 pointer-events-none opacity-20">
+<div class="w-full h-full bg-cover bg-center grayscale blur-sm" style="background-image: url('assets/showcase.webp')"></div>
+</div>
+<div class="relative min-h-screen max-w-4xl mx-auto px-margin-mobile py-24">
+<button class="absolute top-8 right-8 text-secondary-fixed-dim hover:text-primary-container transition-colors" onclick="document.getElementById('penance-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-4xl">close</span>
+</button>
+<h2 class="font-penance text-headline-lg text-primary-container mb-6 drop-shadow-[0_0_10px_rgba(220,20,60,0.5)] text-[64px] text-center">PENANCE</h2>
+<div class="mb-16">
+<p class="font-body-lg text-body-lg text-inverse-surface leading-relaxed text-center">
+                    A narrative-driven noir thriller following detectives Aniket and Rhea as they unravel a conspiracy stretching from the shadowed alleys of Kolkata to the neon-lit depths of Mumbai. Choices matter. Every clue is a thread; every interrogation, a gamble.
+                </p>
+</div>
+<h3 class="font-label-sm text-label-sm tracking-widest text-secondary-fixed-dim uppercase mb-12 border-b border-surface-variant pb-4 text-center">Development Timeline</h3>
+<div class="relative flex flex-col items-center pb-12 w-full max-w-2xl mx-auto">
+<!-- Main Center Line -->
+<div class="absolute top-0 bottom-0 w-[2px] bg-surface-variant left-1/2 -translate-x-1/2"></div>
+<!-- Completed Flow -->
+<div class="absolute top-0 h-[60%] w-[2px] bg-primary-container shadow-[0_0_10px_rgba(220,20,60,0.8)] left-1/2 -translate-x-1/2 z-0"></div>
+<!-- Timeline Items -->
+<div class="flex flex-col gap-12 w-full relative z-10">
+<!-- Completed Steps (Linear Phase) -->
+<div class="flex flex-col gap-8 w-full">
+<!-- Node 1 -->
+<div class="relative flex justify-center w-full">
+<div class="absolute top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-black shadow-[0_0_10px_rgba(220,20,60,1)] flex items-center justify-center z-20"></div>
+<div class="w-1/2 pr-8 text-right self-center">
+<h4 class="font-label-sm text-label-sm text-primary-container">Game Design</h4>
+</div>
+<div class="w-1/2 pl-8"></div>
+</div>
+<!-- Node 2 -->
+<div class="relative flex justify-center w-full">
+<div class="absolute top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-black shadow-[0_0_10px_rgba(220,20,60,1)] flex items-center justify-center z-20"></div>
+<div class="w-1/2 pr-8"></div>
+<div class="w-1/2 pl-8 text-left self-center">
+<h4 class="font-label-sm text-label-sm text-primary-container">Narrative Design</h4>
+</div>
+</div>
+<!-- Node 3 -->
+<div class="relative flex justify-center w-full">
+<div class="absolute top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-black shadow-[0_0_10px_rgba(220,20,60,1)] flex items-center justify-center z-20"></div>
+<div class="w-1/2 pr-8 text-right self-center">
+<h4 class="font-label-sm text-label-sm text-primary-container">Level Design</h4>
+</div>
+<div class="w-1/2 pl-8"></div>
+</div>
+<!-- Node 4 -->
+<div class="relative flex justify-center w-full">
+<div class="absolute top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-black shadow-[0_0_10px_rgba(220,20,60,1)] flex items-center justify-center z-20"></div>
+<div class="w-1/2 pr-8"></div>
+<div class="w-1/2 pl-8 text-left self-center">
+<h4 class="font-label-sm text-label-sm text-primary-container">Reference Docs</h4>
+</div>
+</div>
+<!-- Node 5 -->
+<div class="relative flex justify-center w-full">
+<div class="absolute top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-black shadow-[0_0_10px_rgba(220,20,60,1)] flex items-center justify-center z-20"></div>
+<div class="w-1/2 pr-8 text-right self-center">
+<h4 class="font-label-sm text-label-sm text-primary-container">Voice Actors</h4>
+</div>
+<div class="w-1/2 pl-8"></div>
+</div>
+<!-- Node 6 -->
+<div class="relative flex justify-center w-full">
+<div class="absolute top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-black shadow-[0_0_10px_rgba(220,20,60,1)] flex items-center justify-center z-20"></div>
+<div class="w-1/2 pr-8"></div>
+<div class="w-1/2 pl-8 text-left self-center">
+<h4 class="font-label-sm text-label-sm text-primary-container">Demo Commencement</h4>
+</div>
+</div>
+</div>
+<!-- Branching Phase -->
+<div class="relative mt-8 pt-8">
+<!-- Split lines -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[2px] bg-primary-container shadow-[0_0_10px_rgba(220,20,60,0.8)] z-0"></div>
+<div class="absolute top-0 left-[10%] w-[2px] h-8 bg-primary-container shadow-[0_0_10px_rgba(220,20,60,0.8)] z-0"></div>
+<div class="absolute top-0 right-[10%] w-[2px] h-8 bg-primary-container shadow-[0_0_10px_rgba(220,20,60,0.8)] z-0"></div>
+<div class="grid grid-cols-3 gap-4 text-center">
+<div class="relative pt-4 flex flex-col items-center">
+<div class="w-3 h-3 rounded-full bg-black border-2 border-surface-variant z-20 mb-4"></div>
+<h4 class="font-label-sm text-label-sm text-secondary-fixed-dim">Game Art</h4>
+</div>
+<div class="relative pt-4 flex flex-col items-center">
+<div class="w-3 h-3 rounded-full bg-black border-2 border-surface-variant z-20 mb-4"></div>
+<h4 class="font-label-sm text-label-sm text-secondary-fixed-dim">Greyboxxing</h4>
+</div>
+<div class="relative pt-4 flex flex-col items-center">
+<div class="w-3 h-3 rounded-full bg-black border-2 border-surface-variant z-20 mb-4"></div>
+<h4 class="font-label-sm text-label-sm text-secondary-fixed-dim">Core Mechanics</h4>
+</div>
+</div>
+<!-- Merge lines -->
+<div class="relative h-12 mt-4">
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[2px] bg-surface-variant z-0"></div>
+<div class="absolute bottom-0 left-[10%] w-[2px] h-8 bg-surface-variant z-0"></div>
+<div class="absolute bottom-0 right-[10%] w-[2px] h-8 bg-surface-variant z-0"></div>
+</div>
+</div>
+<!-- Convergence Phase -->
+<div class="relative flex justify-center w-full mt-8">
+<div class="absolute top-1 w-3 h-3 rounded-full bg-black border-2 border-surface-variant z-20"></div>
+<div class="text-center bg-background px-4 z-10">
+<h4 class="font-label-sm text-label-sm text-secondary-fixed-dim mb-4">CONVERGENCE</h4>
+<div class="flex flex-col gap-2 items-center">
+<p class="font-body-md text-body-md text-on-surface-variant/60"><span class="text-on-surface">1st Oct 2026:</span> Polishing</p>
+<p class="font-body-md text-body-md text-on-surface-variant/60"><span class="text-on-surface">20th Oct 2026:</span> QA</p>
+<p class="font-body-md text-body-md text-on-surface-variant/60"><span class="text-primary">TBD:</span> IGDC</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+        // Team Reveal Interaction
+        const teamBtn = document.getElementById('team-reveal-btn');
+        const teamNodes = document.getElementById('team-nodes');
+
+        teamBtn.addEventListener('click', () => {
+            teamBtn.classList.add('scale-0', 'opacity-0');
+            setTimeout(() => {
+                teamBtn.classList.add('hidden');
+                teamNodes.classList.remove('hidden');
+                teamNodes.classList.add('blood-reveal-anim');
+            }, 500);
+        });
+    </script>
+</body></html>
