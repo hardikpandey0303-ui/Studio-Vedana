@@ -1,452 +1,684 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Vedana — PENANCE</title>
+  <meta name="description" content="Studio Vedana is an independent game development studio crafting narrative-driven experiences shaped by atmosphere, consequence, and the human psyche. Currently developing PENANCE on Unreal Engine.">
+  <meta name="author" content="Studio Vedana">
+  <meta name="theme-color" content="#121411">
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Studio Vedana</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Cinzel:wght@400..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "secondary-fixed-dim": "#c7c6c4",
-                        "on-tertiary-fixed": "#1c1b1b",
-                        "surface-variant": "#353535",
-                        "tertiary-fixed": "#e5e2e1",
-                        "surface-container-lowest": "#0e0e0e",
-                        "on-tertiary-container": "#f6f3f3",
-                        "on-primary-container": "#fff1f0",
-                        "outline-variant": "#5c3f3f",
-                        "surface-container": "#1f1f1f",
-                        "surface-dim": "#131313",
-                        "secondary-fixed": "#e3e2e0",
-                        "inverse-surface": "#e2e2e2",
-                        "on-secondary-fixed-variant": "#464746",
-                        "error-container": "#93000a",
-                        "secondary-container": "#464746",
-                        "secondary": "#c7c6c4",
-                        "on-secondary-fixed": "#1b1c1b",
-                        "on-secondary-container": "#b5b5b3",
-                        "inverse-primary": "#bf0030",
-                        "tertiary-fixed-dim": "#c8c6c5",
-                        "on-background": "#e2e2e2",
-                        "on-tertiary-fixed-variant": "#474746",
-                        "on-tertiary": "#313030",
-                        "on-primary-fixed-variant": "#920022",
-                        "outline": "#ac8888",
-                        "primary": "#ffb3b3",
-                        "surface-container-low": "#1b1b1b",
-                        "error": "#ffb4ab",
-                        "on-primary-fixed": "#40000a",
-                        "surface-tint": "#ffb3b3",
-                        "surface-container-highest": "#353535",
-                        "on-error-container": "#ffdad6",
-                        "tertiary-container": "#706f6f",
-                        "on-surface-variant": "#e6bdbc",
-                        "tertiary": "#c8c6c5",
-                        "surface-container-high": "#2a2a2a",
-                        "on-surface": "#e2e2e2",
-                        "on-primary": "#680015",
-                        "background": "#000000", /* Overridden to True Black */
-                        "primary-fixed": "#ffdad9",
-                        "primary-fixed-dim": "#ffb3b3",
-                        "surface-bright": "#393939",
-                        "on-error": "#690005",
-                        "inverse-on-surface": "#303030",
-                        "primary-container": "#dc143c",
-                        "on-secondary": "#303130",
-                        "surface": "#131313"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "margin-desktop": "64px",
-                        "margin-mobile": "20px",
-                        "unit": "8px",
-                        "gutter": "24px",
-                        "container-max": "1440px"
-                    },
-                    "fontFamily": {
-                        "body-lg": ["Hanken Grotesk"],
-                        "headline-lg-mobile": ["Bodoni Moda"],
-                        "label-sm": ["JetBrains Mono"],
-                        "body-md": ["Hanken Grotesk"],
-                        "display-lg": ["Bodoni Moda"],
-                        "headline-lg": ["Bodoni Moda"],
-                        "headline-md": ["Bodoni Moda"],
-                        "penance": ["Cinzel"]
-                    },
-                    "fontSize": {
-                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
-                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500" }],
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
-                        "headline-lg": ["48px", { "lineHeight": "56px", "fontWeight": "700" }],
-                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
-                    },
-                    "boxShadow": {
-                        'crimson-inner': 'inset 0 0 15px rgba(220, 20, 60, 0.2)',
-                    },
-                    "animation": {
-                        'flicker': 'flicker 1.5s infinite alternate',
-                        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    "keyframes": {
-                        flicker: {
-                            '0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%': { opacity: '0.99', textShadow: '0 0 10px rgba(220,20,60,0.8), 0 0 20px rgba(220,20,60,0.8)' },
-                            '20%, 21.999%, 63%, 63.999%, 65%, 69.999%': { opacity: '0.4', textShadow: 'none' },
-                        },
-                        'pulse-glow': {
-                            '0%, 100%': { opacity: '1', boxShadow: '0 0 10px rgba(220,20,60,0.5)' },
-                            '50%': { opacity: '.5', boxShadow: '0 0 20px rgba(220,20,60,0.8)' },
-                        }
-                    }
-                },
-            },
-        }
-    </script>
-<style>
-        body {
-            background-color: #000000;
-            color: #e2e2e2;
-            overflow-x: hidden;
-        }
-        
-        .flicker-hover:hover {
-            animation: flicker 0.2s infinite alternate;
-        }
-        
-        .neon-text-glow {
-            color: #dc143c;
-            text-shadow: 0 0 5px rgba(220,20,60,0.8), 0 0 15px rgba(220,20,60,0.8);
-            animation: flicker 2s infinite alternate;
-        }
+  <!-- Open Graph & Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Studio Vedana">
+  <meta property="og:description" content="Crafting narrative-driven experiences shaped by atmosphere, consequence, and the human psyche. Currently creating PENANCE.">
+  <meta property="og:image" content="assets/work.webp">
+  <meta property="og:image:alt" content="PENANCE concept art — a noir cityscape rooftop at night">
 
-        .isometric-tilt {
-            transition: transform 0.3s ease;
-        }
-        .isometric-tilt:hover {
-            transform: scale(1.05);
-        }
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Studio Vedana">
+  <meta name="twitter:description" content="Crafting narrative-driven experiences shaped by atmosphere, consequence, and the human psyche.">
+  <meta name="twitter:image" content="assets/work.webp">
+  <meta name="twitter:image:alt" content="PENANCE concept art — a noir cityscape rooftop at night">
 
-        .framed-image {
-            border: 1px solid #e2e2e2;
-            box-shadow: inset 0 0 15px rgba(220, 20, 60, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        .framed-image::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.05"/></svg>');
-            pointer-events: none;
-        }
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-        /* Modal Styles */
-        #penance-modal {
-            backdrop-filter: blur(20px);
-        }
-        
-        /* Progress Line */
-        .progress-line {
-            width: 2px;
-            background-color: #dc143c;
-            position: relative;
-        }
-        .progress-node {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #000;
-            border: 2px solid #dc143c;
-            position: absolute;
-            left: -5px;
-        }
-        .progress-node.completed {
-            background-color: #dc143c;
-            box-shadow: 0 0 10px rgba(220, 20, 60, 0.8);
-        }
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..700&family=Cinzel:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-        @keyframes bloodFlowReveal {
-            0% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); filter: drop-shadow(0 20px 10px rgba(220, 20, 60, 0.8)); background: rgba(220, 20, 60, 0.4); border-radius: 50%; }
-            50% { clip-path: polygon(0 50%, 100% 30%, 100% 100%, 0 100%); filter: drop-shadow(0 10px 20px rgba(220, 20, 60, 0.6)); background: rgba(220, 20, 60, 0.2); border-radius: 20%;}
-            100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); filter: drop-shadow(0 0 0 rgba(220, 20, 60, 0)); background: transparent; border-radius: 0;}
-        }
-        .blood-reveal-anim {
-            animation: bloodFlowReveal 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-<body class="font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-surface-variant inset-shadow-crimson">
-<div class="flex justify-between items-center w-full px-margin-desktop py-4 mx-auto max-w-container-max">
-<div class="font-headline-md text-headline-md font-bold tracking-tighter neon-text-glow transition-colors duration-300 flex items-center gap-2">
-<img class="h-8 w-8 object-contain" src="assets/LOGO VERSION 3 VEDANA (1).png"/>
-                STUDIO VEDANA
-            </div>
-<!-- Desktop Nav -->
-<div class="hidden md:flex gap-gutter items-center">
-<a class="font-label-sm text-label-sm tracking-widest text-secondary-fixed-dim hover:text-primary transition-colors duration-300 flicker-hover" href="#about">ABOUT</a>
-<a class="font-label-sm text-label-sm tracking-widest text-secondary-fixed-dim hover:text-primary transition-colors duration-300 flicker-hover" href="#projects">PROJECTS</a>
-<a class="font-label-sm text-label-sm tracking-widest text-secondary-fixed-dim hover:text-primary transition-colors duration-300 flicker-hover" href="#team">TEAM</a>
-</div>
-<a href="mailto:Studiovedanaltd@gmail.com" class="hidden md:block font-label-sm text-label-sm tracking-widest bg-primary-container text-on-primary-container px-6 py-2 hover:opacity-80 transition-opacity flicker-hover border border-primary-container hover:border-on-surface neon-text-glow !text-white shadow-[0_0_10px_rgba(220,20,60,0.8)]">
-                CONTACT
-            </a>
-<!-- Mobile Menu Icon (Visual Only) -->
-<div class="md:hidden text-on-surface">
-<span class="material-symbols-outlined">menu</span>
-</div>
-</div>
-</nav>
-<!-- Main Content Canvas -->
-<main class="flex-grow pt-[80px]"> <!-- Offset for fixed nav -->
-<!-- 1. Seamless Hero -->
-<section class="relative w-full h-[80vh] flex items-center justify-center bg-black overflow-hidden" id="hero">
-<div class="relative w-[400px] h-[400px] md:w-[600px] md:h-[600px] flex items-center justify-center mix-blend-screen opacity-90">
-<img class="w-full h-full object-contain mix-blend-screen" data-alt="Studio Vedana Splash Logo" src="assets/LOGO VERSION 3 VEDANA (1).png"/>
-</div>
-</section>
-<!-- 2. About Section -->
-<section class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-24 md:py-32" id="about">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
-<div class="flex flex-col gap-6 order-2 md:order-1">
-<h2 class="font-headline-lg-mobile md:font-headline-lg text-inverse-surface">
-                        What is <span class="neon-text-glow">Studio Vedana?</span>
-</h2>
-<div class="w-12 h-px bg-primary-container shadow-[0_0_10px_rgba(220,20,60,0.8)]"></div>
-<p class="font-body-lg text-body-lg text-on-surface-variant/80">
-                        We are an independent game development studio dedicated to pushing the boundaries of interactive storytelling. Rooted in the stark contrasts of modern noir, we craft experiences that linger in the shadows of the human psyche. 
-                    </p>
-<p class="font-body-lg text-body-lg text-on-surface-variant/80">
-                        Our mechanics are surgical. Our narratives, relentless. Welcome to the edit suite of reality.
-                    </p>
-</div>
-<div class="order-1 md:order-2">
-<div class="framed-image w-full aspect-video md:aspect-[4/3] isometric-tilt group cursor-pointer">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="About Studio Vedana" src="assets/about.webp"/>
-<div class="absolute inset-0 border border-primary-container/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-[inset_0_0_30px_rgba(220,20,60,0.4)]"></div>
-</div>
-</div>
-</div>
-</section>
-<!-- 3. Project Teaser -->
-<section class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-24 md:py-32 relative" id="projects">
-<div class="text-center mb-16">
-<h2 class="font-headline-md text-headline-md text-inverse-surface uppercase tracking-widest">
-                    Current Project: <span class="text-primary-container flicker-hover inline-block font-penance text-[64px] drop-shadow-[0_0_10px_rgba(220,20,60,0.8)]">PENANCE</span> - Demo
-</h2>
-</div>
-<div class="relative max-w-5xl mx-auto group cursor-pointer" onclick="document.getElementById('penance-modal').classList.remove('hidden')">
-<div class="framed-image w-full aspect-[21/9] overflow-hidden">
-<img class="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-opacity duration-500" data-alt="Studio Vedana Work Showcase" src="assets/work.webp"/>
-<div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
-<span class="font-display-lg text-display-lg text-primary-container drop-shadow-[0_0_15px_rgba(220,20,60,1)] tracking-widest mb-8">COMING SOON</span>
-<button class="border border-primary-container text-primary-container px-8 py-3 font-label-sm text-label-sm tracking-widest hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 flicker-hover uppercase">
-                            Learn More
-                        </button>
-</div>
-</div>
-</div>
-</section>
-<!-- 5. Interactive Team Section -->
-<section class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-32 flex flex-col items-center justify-center min-h-[60vh] relative" id="team">
-<button class="w-32 h-32 rounded-full border-2 border-primary-container flex items-center justify-center group hover:bg-primary-container/10 transition-colors duration-500 z-20 relative shadow-[0_0_20px_rgba(220,20,60,0.3)]" id="team-reveal-btn">
-<span class="font-label-sm text-label-sm tracking-widest text-primary-container group-hover:text-primary transition-colors">TEAM</span>
-<div class="absolute inset-0 rounded-full border border-primary-container animate-ping opacity-20"></div>
-</button>
-<!-- Hidden Team Nodes -->
-<div class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 z-10 pt-48 md:pt-0" id="team-nodes">
-<!-- Node 1 -->
-<div class="flex flex-col items-center gap-4 group isometric-tilt">
-<div class="w-4 h-4 rounded-full bg-primary-container animate-pulse-glow shadow-[0_0_15px_rgba(220,20,60,0.8)]"></div>
-<div class="text-center border border-surface-variant p-6 bg-surface-container-lowest/80 backdrop-blur-md">
-<h4 class="font-label-sm text-label-sm text-primary mb-2">TECH LEAD</h4>
-<p class="font-headline-md text-headline-md text-on-surface mb-1">Subhangan Dutta</p>
-<p class="font-body-md text-body-md text-on-surface-variant/60 text-sm">Unreal Engine Specialist</p>
-</div>
-</div>
-<!-- Node 2 -->
-<div class="flex flex-col items-center gap-4 group isometric-tilt md:-translate-y-16">
-<div class="w-4 h-4 rounded-full bg-primary-container animate-pulse-glow shadow-[0_0_15px_rgba(220,20,60,0.8)]" style="animation-delay: 0.2s;"></div>
-<div class="text-center border border-surface-variant p-6 bg-surface-container-lowest/80 backdrop-blur-md">
-<h4 class="font-label-sm text-label-sm text-primary mb-2">GAME DESIGNER / CREATIVE LEAD</h4>
-<p class="font-headline-md text-headline-md text-on-surface mb-1">Hardik Pandey</p>
-<p class="font-body-md text-body-md text-on-surface-variant/60 text-sm italic">"I write experiences"</p>
-</div>
-</div>
-<!-- Node 3 -->
-<div class="flex flex-col items-center gap-4 group isometric-tilt">
-<div class="w-4 h-4 rounded-full bg-primary-container animate-pulse-glow shadow-[0_0_15px_rgba(220,20,60,0.8)]" style="animation-delay: 0.4s;"></div>
-<div class="text-center border border-surface-variant p-6 bg-surface-container-lowest/80 backdrop-blur-md">
-<h4 class="font-label-sm text-label-sm text-primary mb-2">ART DIRECTOR</h4>
-<p class="font-headline-md text-headline-md text-on-surface mb-1">Sajid Perwez</p>
-<p class="font-body-md text-body-md text-on-surface-variant/60 text-sm">Illustrator / Digital Artist</p>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-surface-container-lowest border-t border-outline-variant w-full py-16 px-margin-mobile md:px-margin-desktop mt-auto">
-<div class="flex flex-col md:flex-row justify-between items-center gap-gutter max-w-container-max mx-auto">
-<div class="font-headline-md text-headline-md neon-text-glow flex items-center gap-2">
-                STUDIO VEDANA
-            </div>
-<div class="flex flex-col items-center justify-center my-8 md:my-0 text-center w-full md:w-auto">
-<p class="font-body-lg text-body-lg text-inverse-surface mb-6 w-full text-center">Interested in learning more?</p>
-<a class="inline-block font-label-sm text-label-sm tracking-widest text-primary-container border border-primary-container px-6 py-2 hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 uppercase shadow-[0_0_10px_rgba(220,20,60,0.5)] hover:shadow-[0_0_20px_rgba(220,20,60,0.8)] neon-text-glow !text-white" href="mailto:Studiovedanaltd@gmail.com">Contact Us</a>
-</div>
-<div class="flex gap-6">
-<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-tertiary-fixed-variant hover:text-primary transition-all duration-500 hover:translate-x-1" href="#">INSTAGRAM</a>
-<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-tertiary-fixed-variant hover:text-primary transition-all duration-500 hover:translate-x-1" href="#">TWITTER</a>
-</div>
-</div>
-<div class="text-center mt-12 font-label-sm text-label-sm tracking-widest text-surface-variant">
-            © 2024 STUDIO VEDANA. ALL RIGHTS RESERVED.
-        </div>
-</footer>
-<!-- 4. Penance Modal -->
-<div class="hidden fixed inset-0 z-[100] bg-black/90 overflow-y-auto w-full h-full" id="penance-modal">
-<!-- Background Texture -->
-<div class="fixed inset-0 pointer-events-none opacity-20">
-<div class="w-full h-full bg-cover bg-center grayscale blur-sm" style="background-image: url('assets/showcase.webp')"></div>
-</div>
-<div class="relative min-h-screen max-w-4xl mx-auto px-margin-mobile py-24">
-<button class="absolute top-8 right-8 text-secondary-fixed-dim hover:text-primary-container transition-colors" onclick="document.getElementById('penance-modal').classList.add('hidden')">
-<span class="material-symbols-outlined text-4xl">close</span>
-</button>
-<h2 class="font-penance text-headline-lg text-primary-container mb-6 drop-shadow-[0_0_10px_rgba(220,20,60,0.5)] text-[64px] text-center">PENANCE</h2>
-<div class="mb-16">
-<p class="font-body-lg text-body-lg text-inverse-surface leading-relaxed text-center">
-                    A narrative-driven noir thriller following detectives Aniket and Rhea as they unravel a conspiracy stretching from the shadowed alleys of Kolkata to the neon-lit depths of Mumbai. Choices matter. Every clue is a thread; every interrogation, a gamble.
-                </p>
-</div>
-<h3 class="font-label-sm text-label-sm tracking-widest text-secondary-fixed-dim uppercase mb-12 border-b border-surface-variant pb-4 text-center">Development Timeline</h3>
-<div class="relative flex flex-col items-center pb-12 w-full max-w-2xl mx-auto">
-<!-- Main Center Line -->
-<div class="absolute top-0 bottom-0 w-[2px] bg-surface-variant left-1/2 -translate-x-1/2"></div>
-<!-- Completed Flow -->
-<div class="absolute top-0 h-[60%] w-[2px] bg-primary-container shadow-[0_0_10px_rgba(220,20,60,0.8)] left-1/2 -translate-x-1/2 z-0"></div>
-<!-- Timeline Items -->
-<div class="flex flex-col gap-12 w-full relative z-10">
-<!-- Completed Steps (Linear Phase) -->
-<div class="flex flex-col gap-8 w-full">
-<!-- Node 1 -->
-<div class="relative flex justify-center w-full">
-<div class="absolute top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-black shadow-[0_0_10px_rgba(220,20,60,1)] flex items-center justify-center z-20"></div>
-<div class="w-1/2 pr-8 text-right self-center">
-<h4 class="font-label-sm text-label-sm text-primary-container">Game Design</h4>
-</div>
-<div class="w-1/2 pl-8"></div>
-</div>
-<!-- Node 2 -->
-<div class="relative flex justify-center w-full">
-<div class="absolute top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-black shadow-[0_0_10px_rgba(220,20,60,1)] flex items-center justify-center z-20"></div>
-<div class="w-1/2 pr-8"></div>
-<div class="w-1/2 pl-8 text-left self-center">
-<h4 class="font-label-sm text-label-sm text-primary-container">Narrative Design</h4>
-</div>
-</div>
-<!-- Node 3 -->
-<div class="relative flex justify-center w-full">
-<div class="absolute top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-black shadow-[0_0_10px_rgba(220,20,60,1)] flex items-center justify-center z-20"></div>
-<div class="w-1/2 pr-8 text-right self-center">
-<h4 class="font-label-sm text-label-sm text-primary-container">Level Design</h4>
-</div>
-<div class="w-1/2 pl-8"></div>
-</div>
-<!-- Node 4 -->
-<div class="relative flex justify-center w-full">
-<div class="absolute top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-black shadow-[0_0_10px_rgba(220,20,60,1)] flex items-center justify-center z-20"></div>
-<div class="w-1/2 pr-8"></div>
-<div class="w-1/2 pl-8 text-left self-center">
-<h4 class="font-label-sm text-label-sm text-primary-container">Reference Docs</h4>
-</div>
-</div>
-<!-- Node 5 -->
-<div class="relative flex justify-center w-full">
-<div class="absolute top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-black shadow-[0_0_10px_rgba(220,20,60,1)] flex items-center justify-center z-20"></div>
-<div class="w-1/2 pr-8 text-right self-center">
-<h4 class="font-label-sm text-label-sm text-primary-container">Voice Actors</h4>
-</div>
-<div class="w-1/2 pl-8"></div>
-</div>
-<!-- Node 6 -->
-<div class="relative flex justify-center w-full">
-<div class="absolute top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-black shadow-[0_0_10px_rgba(220,20,60,1)] flex items-center justify-center z-20"></div>
-<div class="w-1/2 pr-8"></div>
-<div class="w-1/2 pl-8 text-left self-center">
-<h4 class="font-label-sm text-label-sm text-primary-container">Demo Commencement</h4>
-</div>
-</div>
-</div>
-<!-- Branching Phase -->
-<div class="relative mt-8 pt-8">
-<!-- Split lines -->
-<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[2px] bg-primary-container shadow-[0_0_10px_rgba(220,20,60,0.8)] z-0"></div>
-<div class="absolute top-0 left-[10%] w-[2px] h-8 bg-primary-container shadow-[0_0_10px_rgba(220,20,60,0.8)] z-0"></div>
-<div class="absolute top-0 right-[10%] w-[2px] h-8 bg-primary-container shadow-[0_0_10px_rgba(220,20,60,0.8)] z-0"></div>
-<div class="grid grid-cols-3 gap-4 text-center">
-<div class="relative pt-4 flex flex-col items-center">
-<div class="w-3 h-3 rounded-full bg-black border-2 border-surface-variant z-20 mb-4"></div>
-<h4 class="font-label-sm text-label-sm text-secondary-fixed-dim">Game Art</h4>
-</div>
-<div class="relative pt-4 flex flex-col items-center">
-<div class="w-3 h-3 rounded-full bg-black border-2 border-surface-variant z-20 mb-4"></div>
-<h4 class="font-label-sm text-label-sm text-secondary-fixed-dim">Greyboxxing</h4>
-</div>
-<div class="relative pt-4 flex flex-col items-center">
-<div class="w-3 h-3 rounded-full bg-black border-2 border-surface-variant z-20 mb-4"></div>
-<h4 class="font-label-sm text-label-sm text-secondary-fixed-dim">Core Mechanics</h4>
-</div>
-</div>
-<!-- Merge lines -->
-<div class="relative h-12 mt-4">
-<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[2px] bg-surface-variant z-0"></div>
-<div class="absolute bottom-0 left-[10%] w-[2px] h-8 bg-surface-variant z-0"></div>
-<div class="absolute bottom-0 right-[10%] w-[2px] h-8 bg-surface-variant z-0"></div>
-</div>
-</div>
-<!-- Convergence Phase -->
-<div class="relative flex justify-center w-full mt-8">
-<div class="absolute top-1 w-3 h-3 rounded-full bg-black border-2 border-surface-variant z-20"></div>
-<div class="text-center bg-background px-4 z-10">
-<h4 class="font-label-sm text-label-sm text-secondary-fixed-dim mb-4">CONVERGENCE</h4>
-<div class="flex flex-col gap-2 items-center">
-<p class="font-body-md text-body-md text-on-surface-variant/60"><span class="text-on-surface">1st Oct 2026:</span> Polishing</p>
-<p class="font-body-md text-body-md text-on-surface-variant/60"><span class="text-on-surface">20th Oct 2026:</span> QA</p>
-<p class="font-body-md text-body-md text-on-surface-variant/60"><span class="text-primary">TBD:</span> IGDC</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<script>
-        // Team Reveal Interaction
-        const teamBtn = document.getElementById('team-reveal-btn');
-        const teamNodes = document.getElementById('team-nodes');
+<body>
 
-        teamBtn.addEventListener('click', () => {
-            teamBtn.classList.add('scale-0', 'opacity-0');
-            setTimeout(() => {
-                teamBtn.classList.add('hidden');
-                teamNodes.classList.remove('hidden');
-                teamNodes.classList.add('blood-reveal-anim');
-            }, 500);
-        });
-    </script>
-</body></html>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- =========================================================================
+       FIXED NAVIGATION HEADER
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#hero" class="brand-link" aria-label="Studio Vedana — return to top">
+        <div class="brand-icon-wrapper">
+          <img
+            src="assets/LOGO VERSION 3 VEDANA (1).png"
+            alt="Studio Vedana peacock emblem"
+            class="brand-icon"
+            width="38"
+            height="38"
+            loading="eager"
+          >
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-title">STUDIO VEDANA</span>
+          <span class="brand-subtitle">Game Studio</span>
+        </div>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">PENANCE</a>
+        <a href="#team" class="nav-link">Team</a>
+        <a href="https://studio-vedana.itch.io/penance-first-vertical-slice" target="_blank" rel="noopener noreferrer" class="nav-link nav-link--itch">itch.io ↗</a>
+        <a href="mailto:Studiovedanaltd@gmail.com" class="nav-cta-btn">Contact</a>
+      </nav>
+
+      <button
+        id="mobile-nav-toggle"
+        class="mobile-nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav-drawer"
+        aria-label="Open navigation menu"
+      >
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <nav id="mobile-nav-drawer" class="mobile-nav-drawer" aria-label="Mobile navigation">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#projects" class="nav-link">PENANCE</a>
+      <a href="#team" class="nav-link">Team</a>
+      <a href="https://studio-vedana.itch.io/penance-first-vertical-slice" target="_blank" rel="noopener noreferrer" class="nav-link nav-link--itch">First Vertical Slice (itch.io) ↗</a>
+      <a href="mailto:Studiovedanaltd@gmail.com" class="nav-cta-btn">Contact Studio</a>
+    </nav>
+  </header>
+
+  <!-- =========================================================================
+       MAIN CONTENT
+       ========================================================================= -->
+  <main id="main-content">
+
+    <!-- 1. HERO ─────────────────────────────────────────────────── -->
+    <section class="hero-section" id="hero" aria-labelledby="hero-heading">
+      <div class="hero-container">
+
+        <div class="hero-content">
+          <h1 id="hero-heading" class="hero-title">
+            Stories that leave<br>a <em>mark.</em>
+          </h1>
+
+          <p class="hero-description">
+            We craft narrative-driven experiences shaped by atmosphere,
+            consequence, and the shadows of the human psyche.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">
+              <span>Explore PENANCE</span>
+              <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </a>
+            <a href="#about" class="btn-secondary">
+              <span>Studio Philosophy</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Peacock Emblem -->
+        <div class="hero-emblem-wrapper">
+          <div class="emblem-frame">
+            <span class="emblem-corner top-left" aria-hidden="true"></span>
+            <span class="emblem-corner top-right" aria-hidden="true"></span>
+            <span class="emblem-corner bottom-left" aria-hidden="true"></span>
+            <span class="emblem-corner bottom-right" aria-hidden="true"></span>
+            <img
+              src="assets/LOGO VERSION 3 VEDANA (1).png"
+              alt="Studio Vedana woodcut emblem — a peacock with fanned tail in deep crimson"
+              class="emblem-image"
+              width="440"
+              height="440"
+              loading="eager"
+            >
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. ABOUT ─────────────────────────────────────────────────── -->
+    <section class="about-section" id="about" aria-labelledby="about-heading">
+      <div class="about-container js-reveal">
+
+        <div class="about-text-column">
+          <h2 id="about-heading" class="about-heading">
+            What is<br><em>Studio Vedana?</em>
+          </h2>
+
+          <p class="about-body-lead">
+            We are an independent game development studio dedicated to pushing the boundaries of interactive storytelling. Rooted in the stark contrasts of modern noir, we craft experiences that linger in the shadows of the human psyche.
+          </p>
+
+          <p class="about-body-secondary">
+            Our mechanics are surgical. Our narratives, relentless.
+          </p>
+
+          <div class="about-pillars">
+            <div class="pillar-item">
+              <span class="pillar-label">Surgical Mechanics</span>
+              <p>Choice-and-consequence systems where investigation and moral decisions carry lasting weight.</p>
+            </div>
+            <div class="pillar-item">
+              <span class="pillar-label">Psychological Noir</span>
+              <p>Atmospheric worldbuilding exploring tension, ambiguity, and human vulnerability across South Asian urban landscapes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Artwork: editorial bookplate, asymmetric shadow -->
+        <div class="about-image-column">
+          <figure class="editorial-bookplate">
+            <div class="bookplate-inner-border">
+              <img
+                src="assets/about.webp"
+                alt="Concept art for PENANCE — a rain-drenched alleyway lit by red and green neon, an investigator under an umbrella"
+                class="editorial-image"
+                width="1280"
+                height="797"
+                loading="lazy"
+              >
+            </div>
+            <figcaption class="bookplate-caption">
+              <span>Plate I — Environmental Noir Study</span>
+              <span>Art: Sajid Perwez</span>
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. PENANCE ─────────────────────────────────────────────────── -->
+    <section class="projects-section" id="projects" aria-labelledby="projects-heading">
+      <div class="projects-container">
+
+        <!-- Section identifier — flush left, not centered -->
+        <div class="projects-header js-reveal">
+          <span class="section-label">02 / Featured Project</span>
+          <h2 id="projects-heading" class="projects-title">PENANCE</h2>
+          <p class="projects-subline">
+            A narrative investigation. Kolkata to Mumbai. Every clue, a thread.
+          </p>
+        </div>
+
+        <!-- Dossier Folder Composition -->
+        <div class="dossier-folder js-reveal" id="dossier-folder-trigger">
+
+          <!-- Folder cover (visible before opening) -->
+          <div class="folder-cover" id="folder-cover" aria-hidden="true">
+            <div class="folder-tab">
+              <span class="folder-tab-text">CASE 001</span>
+            </div>
+            <div class="folder-cover-body">
+              <div class="folder-cover-header">
+                <span class="folder-classification">ACTIVE INVESTIGATION</span>
+                <span class="folder-stamp">FIRST SLICE LIVE</span>
+              </div>
+              <div class="folder-cover-title-block">
+                <span class="folder-case-number">FILE NO. CID-001 / KOL-MUM</span>
+                <h3 class="folder-case-title">PENANCE</h3>
+                <span class="folder-case-subtitle">Narrative Investigation — Interactive</span>
+              </div>
+              <div class="folder-cover-meta">
+                <div class="folder-meta-row">
+                  <span class="folder-meta-key">Lead Investigators</span>
+                  <span class="folder-meta-val">Det. Aniket &amp; Det. Rhea</span>
+                </div>
+                <div class="folder-meta-row">
+                  <span class="folder-meta-key">Jurisdiction</span>
+                  <span class="folder-meta-val">Kolkata → Mumbai</span>
+                </div>
+                <div class="folder-meta-row">
+                  <span class="folder-meta-key">Status</span>
+                  <span class="folder-meta-val folder-status-active">First Vertical Slice Available</span>
+                </div>
+              </div>
+              <!-- Folder Actions -->
+              <div class="folder-actions">
+                <a
+                  href="https://studio-vedana.itch.io/penance-first-vertical-slice"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="folder-btn folder-btn--itch"
+                  aria-label="Download Penance First Vertical Slice on itch.io (opens in new tab)"
+                >
+                  <svg class="itch-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M4.05 4.5l-.25 1.7A10.87 10.87 0 0 0 2 12.5a10.85 10.85 0 0 0 1.8 6.3L4.05 20.5h15.9l.25-1.7A10.85 10.85 0 0 0 22 12.5a10.87 10.87 0 0 0-1.8-6.3L19.95 4.5H4.05zm5.45 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm5 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
+                  </svg>
+                  <span>Play Vertical Slice</span>
+                  <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                  </svg>
+                </a>
+                <button
+                  type="button"
+                  class="folder-btn folder-btn--open open-penance-modal-btn"
+                  aria-haspopup="dialog"
+                  aria-controls="penance-modal"
+                >
+                  <span>Open Case File</span>
+                  <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <!-- The artwork fills the right portion of the cover -->
+            <div class="folder-cover-artwork">
+              <img
+                src="assets/work.webp"
+                alt="Panoramic concept art for PENANCE — a gritty urban rooftop at night with illuminated apartment windows"
+                width="1376"
+                height="768"
+                loading="lazy"
+              >
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. TEAM ─────────────────────────────────────────────────── -->
+    <section class="team-section" id="team" aria-labelledby="team-heading">
+      <div class="team-container">
+
+        <!-- Atmospheric header image -->
+        <div class="team-ambient-header js-reveal">
+          <img
+            src="assets/team.webp"
+            alt="Concept art of an evening tea terrace — warm lamplight through industrial glass windows"
+            width="1536"
+            height="865"
+            loading="lazy"
+          >
+          <div class="team-ambient-overlay">
+            <span class="team-ambient-label">03 / The Studio</span>
+            <h2 id="team-heading" class="team-ambient-title">Three people making something with care.</h2>
+          </div>
+        </div>
+
+        <!-- Team roster — editorial list, not card grid -->
+        <ol class="team-roster js-reveal" aria-label="Studio team members">
+
+          <li class="team-member">
+            <div class="member-index" aria-hidden="true">01</div>
+            <div class="member-body">
+              <div class="member-header">
+                <h3 class="member-name">Hardik Pandey</h3>
+                <span class="member-role">Game Designer &amp; Creative Lead</span>
+              </div>
+              <blockquote class="member-quote">
+                &ldquo;I write experiences.&rdquo;
+              </blockquote>
+              <p class="member-scope">
+                Directs game design architecture, narrative systems, and creative direction for PENANCE.
+              </p>
+            </div>
+          </li>
+
+          <li class="team-member">
+            <div class="member-index" aria-hidden="true">02</div>
+            <div class="member-body">
+              <div class="member-header">
+                <h3 class="member-name">Subhangan Dutta</h3>
+                <span class="member-role">Tech Lead &amp; Unreal Engine Specialist</span>
+              </div>
+              <p class="member-scope">
+                Architects gameplay mechanics, rendering pipelines, and interactive infrastructure in Unreal Engine.
+              </p>
+            </div>
+          </li>
+
+          <li class="team-member">
+            <div class="member-index" aria-hidden="true">03</div>
+            <div class="member-body">
+              <div class="member-header">
+                <h3 class="member-name">Sajid Perwez</h3>
+                <span class="member-role">Art Director, Illustrator &amp; Digital Artist</span>
+              </div>
+              <p class="member-scope">
+                Crafts the visual identity, environment concept art, and atmospheric color direction for PENANCE.
+              </p>
+            </div>
+          </li>
+
+        </ol>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-container">
+
+      <div class="footer-top">
+        <div class="footer-brand-column">
+          <p class="footer-wordmark">STUDIO VEDANA</p>
+          <p class="footer-description">
+            Independent game development.<br>
+            Narrative-driven. Psychologically honest.
+          </p>
+          <div class="footer-links-group">
+            <a
+              href="https://studio-vedana.itch.io/penance-first-vertical-slice"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-itch-link"
+            >
+              <svg class="itch-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4.05 4.5l-.25 1.7A10.87 10.87 0 0 0 2 12.5a10.85 10.85 0 0 0 1.8 6.3L4.05 20.5h15.9l.25-1.7A10.85 10.85 0 0 0 22 12.5a10.87 10.87 0 0 0-1.8-6.3L19.95 4.5H4.05zm5.45 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm5 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
+              </svg>
+              <span>PENANCE: First Vertical Slice on itch.io ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-contact-column">
+          <span class="contact-label">For inquiries &amp; collaborations</span>
+          <a href="mailto:Studiovedanaltd@gmail.com" class="contact-email-link">
+            Studiovedanaltd@gmail.com
+          </a>
+          <p class="contact-note">
+            Publishers, festival juries, and collaborators are welcome.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="current-year">2026</span> Studio Vedana</span>
+        <a
+          href="https://studio-vedana.itch.io/penance-first-vertical-slice"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-itch-tag"
+        >
+          itch.io: First Vertical Slice
+        </a>
+        <a href="#hero" class="back-to-top-link" aria-label="Return to top">
+          Back to top
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 13V3M3 8l5-5 5 5"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       PENANCE CASE FILE DIALOG — Accessible native dialog element
+       ========================================================================= -->
+  <dialog
+    id="penance-modal"
+    class="penance-dialog"
+    aria-labelledby="dialog-title"
+    aria-modal="true"
+  >
+    <div class="dialog-container">
+
+      <!-- Dialog Header: Folder document appearance -->
+      <div class="dialog-header">
+        <div class="dialog-header-left">
+          <span class="dialog-file-number">FILE NO. CID-001 / KOL-MUM</span>
+          <h2 id="dialog-title" class="dialog-title">PENANCE</h2>
+          <span class="dialog-subtitle">Development Dossier — Narrative Investigation</span>
+        </div>
+        <button
+          id="close-penance-modal"
+          class="dialog-close-btn"
+          aria-label="Close Case File"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="dialog-content">
+
+        <!-- Document section tabs -->
+        <nav class="dialog-section-tabs" aria-label="Case file sections">
+          <button class="dialog-tab is-active" data-tab="overview" type="button">Case Overview</button>
+          <button class="dialog-tab" data-tab="record" type="button">Production Record</button>
+        </nav>
+
+        <!-- SECTION: Overview -->
+        <section class="dialog-tab-panel is-active" id="tab-overview" aria-label="Case overview">
+
+          <!-- Story Brief -->
+          <div class="case-document">
+            <div class="doc-header">
+              <span class="doc-label">NARRATIVE BRIEF</span>
+              <span class="doc-stamp doc-stamp--active">ACTIVE CASE</span>
+            </div>
+            <div class="doc-body">
+              <p class="doc-text">
+                A narrative-driven noir thriller following detectives Aniket and Rhea as they unravel a conspiracy stretching from the shadowed alleys of Kolkata to the neon-lit depths of Mumbai.
+              </p>
+              <p class="doc-text">
+                Choices matter. Every clue is a thread; every interrogation, a gamble.
+              </p>
+            </div>
+          </div>
+
+          <!-- Case Particulars -->
+          <div class="case-particulars">
+            <div class="particular-row">
+              <span class="particular-key">Protagonists</span>
+              <span class="particular-val">Detectives Aniket &amp; Rhea</span>
+            </div>
+            <div class="particular-row">
+              <span class="particular-key">Setting</span>
+              <span class="particular-val">Kolkata &amp; Mumbai</span>
+            </div>
+            <div class="particular-row">
+              <span class="particular-key">Engine</span>
+              <span class="particular-val">Unreal Engine</span>
+            </div>
+            <div class="particular-row">
+              <span class="particular-key">Genre</span>
+              <span class="particular-val">Narrative Investigation / Noir Thriller</span>
+            </div>
+            <div class="particular-row">
+              <span class="particular-key">Current Phase</span>
+              <span class="particular-val">First Vertical Slice Live on itch.io</span>
+            </div>
+            <div class="particular-row">
+              <span class="particular-key">Platform</span>
+              <span class="particular-val">Windows (Downloadable Build)</span>
+            </div>
+          </div>
+
+          <!-- Playable Vertical Slice Showcase on itch.io -->
+          <div class="vertical-slice-card">
+            <div class="slice-card-header">
+              <span class="doc-label">PLAYABLE PROTOTYPE — WINDOWS</span>
+              <span class="doc-stamp doc-stamp--active">LIVE ON ITCH.IO</span>
+            </div>
+            <div class="slice-card-body">
+              <h4 class="slice-title">Penance — First Vertical Slice</h4>
+              <p class="slice-quote">&ldquo;Because blood not washed tends to stick to the skin.&rdquo;</p>
+              <p class="slice-text">
+                An isometric 3D thriller crime investigation game set across the contrasting urban worlds of Mumbai and Kolkata. The first playable vertical slice prototype is live and available for Windows on itch.io.
+              </p>
+              <div class="slice-cta-row">
+                <a
+                  href="https://studio-vedana.itch.io/penance-first-vertical-slice"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="slice-play-btn"
+                >
+                  <svg class="itch-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M4.05 4.5l-.25 1.7A10.87 10.87 0 0 0 2 12.5a10.85 10.85 0 0 0 1.8 6.3L4.05 20.5h15.9l.25-1.7A10.85 10.85 0 0 0 22 12.5a10.87 10.87 0 0 0-1.8-6.3L19.95 4.5H4.05zm5.45 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm5 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
+                  </svg>
+                  <span>Download on itch.io</span>
+                  <svg class="btn-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                  </svg>
+                </a>
+                <span class="slice-badge">Free Prototype • Windows</span>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- SECTION: Production Record -->
+        <section class="dialog-tab-panel" id="tab-record" aria-label="Production record" hidden>
+
+          <div class="prod-record">
+            <h3 class="prod-record-heading">Production Log</h3>
+
+            <!-- Completed entries -->
+            <div class="log-entry log-entry--done">
+              <div class="log-status">
+                <span class="log-status-dot" aria-hidden="true"></span>
+                <span class="log-status-text">Completed</span>
+              </div>
+              <div class="log-detail">
+                <span class="log-title">Game Design</span>
+                <span class="log-note">Core design document and systems architecture established.</span>
+              </div>
+            </div>
+
+            <div class="log-entry log-entry--done">
+              <div class="log-status">
+                <span class="log-status-dot" aria-hidden="true"></span>
+                <span class="log-status-text">Completed</span>
+              </div>
+              <div class="log-detail">
+                <span class="log-title">Narrative Design</span>
+                <span class="log-note">Story arc, character briefs, and dialogue scripting completed.</span>
+              </div>
+            </div>
+
+            <div class="log-entry log-entry--done">
+              <div class="log-status">
+                <span class="log-status-dot" aria-hidden="true"></span>
+                <span class="log-status-text">Completed</span>
+              </div>
+              <div class="log-detail">
+                <span class="log-title">Reference Documentation</span>
+                <span class="log-note">Visual bibles, world references, and production guidelines assembled.</span>
+              </div>
+            </div>
+
+            <div class="log-entry log-entry--done">
+              <div class="log-status">
+                <span class="log-status-dot" aria-hidden="true"></span>
+                <span class="log-status-text">Completed</span>
+              </div>
+              <div class="log-detail">
+                <span class="log-title">Voice Acting — Casting &amp; Script Prep</span>
+                <span class="log-note">Actors cast, recording scripts prepared.</span>
+              </div>
+            </div>
+
+            <div class="log-entry log-entry--done">
+              <div class="log-status">
+                <span class="log-status-dot" aria-hidden="true"></span>
+                <span class="log-status-text">Completed</span>
+              </div>
+              <div class="log-detail">
+                <span class="log-title">Environment Greyboxing</span>
+                <span class="log-note">Entire playable game environment has been greyboxed across the intended play area. Spatial flow, pacing, and navigation validated. Art pass pending.</span>
+              </div>
+            </div>
+
+            <div class="log-entry log-entry--done">
+              <div class="log-status">
+                <span class="log-status-dot" aria-hidden="true"></span>
+                <span class="log-status-text">Completed</span>
+              </div>
+              <div class="log-detail">
+                <span class="log-title">Dialogue System</span>
+                <span class="log-note">In-game dialogue system developed and integrated.</span>
+              </div>
+            </div>
+
+            <!-- Active entries -->
+            <div class="log-entry log-entry--active">
+              <div class="log-status">
+                <span class="log-status-dot" aria-hidden="true"></span>
+                <span class="log-status-text">In Progress</span>
+              </div>
+              <div class="log-detail">
+                <span class="log-title">Game Art Pipeline</span>
+                <span class="log-note">2D and 3D asset production underway.</span>
+              </div>
+            </div>
+
+            <div class="log-entry log-entry--done">
+              <div class="log-status">
+                <span class="log-status-dot" aria-hidden="true"></span>
+                <span class="log-status-text">Live</span>
+              </div>
+              <div class="log-detail">
+                <span class="log-title">First Vertical Slice — itch.io</span>
+                <span class="log-note">
+                  Downloadable Windows prototype published.
+                  <a href="https://studio-vedana.itch.io/penance-first-vertical-slice" target="_blank" rel="noopener noreferrer" class="log-link">Play on itch.io ↗</a>
+                </span>
+              </div>
+            </div>
+
+            <div class="log-entry log-entry--active">
+              <div class="log-status">
+                <span class="log-status-dot" aria-hidden="true"></span>
+                <span class="log-status-text">In Progress</span>
+              </div>
+              <div class="log-detail">
+                <span class="log-title">Core Mechanics — Investigation &amp; Interrogation</span>
+                <span class="log-note">Gameplay loop, evidence interaction, and interrogation systems in production.</span>
+              </div>
+            </div>
+
+            <!-- Future -->
+            <div class="log-entry log-entry--future">
+              <div class="log-status">
+                <span class="log-status-dot" aria-hidden="true"></span>
+                <span class="log-status-text">Upcoming</span>
+              </div>
+              <div class="log-detail">
+                <span class="log-title">Polishing &amp; QA</span>
+                <span class="log-note">October 2026 targets recorded for polishing and quality assurance. Status subject to studio confirmation.</span>
+              </div>
+            </div>
+
+            <div class="log-entry log-entry--future">
+              <div class="log-status">
+                <span class="log-status-dot" aria-hidden="true"></span>
+                <span class="log-status-text">Target</span>
+              </div>
+              <div class="log-detail">
+                <span class="log-title">IGDC Showcase</span>
+                <span class="log-note">India Game Developer Conference — festival evaluation target. Date to be confirmed.</span>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div><!-- /dialog-content -->
+
+    </div><!-- /dialog-container -->
+  </dialog>
+
+</body>
+</html>
